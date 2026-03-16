@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay Dangerous | Texas Tenant Rights</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* THE LOGO OUTLINE VISION */
+        .watermark { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            object-fit: contain; z-index: -1; pointer-events: none; 
+            opacity: 0.12;
+            filter: drop-shadow(0 0 1px #7e22ce) drop-shadow(0 0 5px rgba(126, 34, 206, 0.3));
+        }
+
+        input, select { 
+            background: rgba(0, 0, 0, 0.6) !important; 
+            border: 1px solid #7e22ce !important; 
+            color: #a855f7 !important; 
+        }
+        input::placeholder { color: #581c87; }
+        .font-heading { font-family: 'Oswald', sans-serif; }
+
+        /* THE "GLARE-KILLER" SMOKE GRAY PAPER */
+        .paper-glow { 
+            background-color: #d1d1d1 !important; 
+            background-image: linear-gradient(to bottom, #d1d1d1, #c5c5c5) !important;
+            border: 4px solid #7e22ce !important; 
+            box-shadow: 0 0 20px #7e22ce, 0 0 50px rgba(126, 34, 206, 0.5) !important;
+            border-radius: 4px;
+            color: #1a1a1a !important;
+        }
+
+        .preview-text { transition: color 0.3s ease; font-weight: bold; }
+        select option { background: #000; color: #a855f7; }
+    </style>
+</head>
+<body class="bg-black text-purple-600 font-sans">
+
+    <img src="brand-logo.jpg" class="watermark" alt="Stay Dangerous Logo">
+
+    <nav class="p-4 border-b border-zinc-900 flex justify-end items-center bg-black/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="space-x-6 uppercase text-xs tracking-widest font-bold">
+            <a href="index.html" class="text-white underline tracking-tighter">Home</a>
+            <a href="about.html" class="hover:text-white text-purple-500 transition">The Mission</a>
+            <a href="delivery.html" class="hover:text-white text-purple-500 transition">Delivery Guide</a>
+            <a href="privacy.html" class="hover:text-white text-gray-500 transition">Privacy</a>
+        </div>
+    </nav>
+
+    <section class="py-12 text-center px-4">
+        <h1 class="text-5xl md:text-7xl font-heading uppercase mb-4 text-purple-700 font-bold tracking-tight">The system counts on your silence.</h1>
+        <h2 class="text-2xl md:text-3xl text-white font-heading uppercase mb-8 italic tracking-wide">We count on your knowledge.</h2>
+    </section>
+
+    <section id="generator" class="max-w-7xl mx-auto py-10 px-6 mb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            
+            <div class="bg-black/40 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-2xl">
+                <h3 class="text-3xl font-heading uppercase mb-8 border-b-2 border-white pb-2 inline-block text-purple-700 font-bold">Notice Generator</h3>
+                <form id="noticeForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block uppercase text-[10px] font-bold text-white tracking-widest mb-2">Full Name</label>
+                            <input type="text" id="tenantName" oninput="updatePreview()" placeholder="Your Name" class="w-full p-4 rounded outline-none focus:border-white transition">
+                        </div>
+                        <div>
+                            <label class="block uppercase text-[10px] font-bold text-white tracking-widest mb-2">Landlord/Management</label>
+                            <input type="text" id="landlordName" oninput="updatePreview()" placeholder="Management Name" class="w-full p-4 rounded outline-none focus:border-white transition">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block uppercase text-[10px] font-bold text-white tracking-widest mb-2">Your Address</label>
+                        <input type="text" id="tenantAddress" oninput="updatePreview()" placeholder="123 Main St, Baytown, TX" class="w-full p-4 rounded outline-none focus:border-white transition">
+                    </div>
+                    <div>
+                        <label class="block uppercase text-[10px] font-bold text-white tracking-widest mb-2">Select Issue</label>
+                        <select id="issue" onchange="updatePreview()" class="w-full p-4 rounded outline-none focus:border-white transition">
+                            <optgroup label="Critical Repairs">
+                                <option value="No Hot Water">No Hot Water</option>
+                                <option value="Broken AC (Health Hazard)">Broken AC (Health Hazard)</option>
+                                <option value="No Electricity/Power">No Electricity/Power</option>
+                            </optgroup>
+                            <optgroup label="Health & Safety">
+                                <option value="Active Mold Growth">Active Mold Growth</option>
+                                <option value="Pest/Rodent Infestation">Pest/Rodent Infestation</option>
+                                <option value="Roof or Ceiling Leak">Roof or Ceiling Leak</option>
+                            </optgroup>
+                            <optgroup label="Legal Protections">
+                                <option value="Reasonable Accommodation Request">Reasonable Accommodation Request</option>
+                                <option value="Formal Complaint: Retaliation">Formal Complaint: Retaliation</option>
+                                <option value="Formal Complaint: Harassment">Formal Complaint: Harassment</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <button type="button" onclick="generatePDF()" class="w-full bg-purple-700 text-white font-heading py-5 text-2xl uppercase hover:bg-white hover:text-purple-900 transition shadow-xl font-bold">
+                        Download Official PDF
+                    </button>
+                </form>
+            </div>
+
+            <div class="sticky top-24">
+                <h3 class="text-xl font-heading uppercase mb-4 text-white opacity-50 tracking-widest text-center">Live Preview</h3>
+                <div id="previewBox" class="paper-glow p-10 min-h-[500px] text-sm font-serif leading-relaxed relative">
+                    <p class="font-bold mb-2">DATE: <span id="pDate" class="preview-text"></span></p>
+                    <p class="text-[10px] font-bold mb-6 text-zinc-600 uppercase">CERTIFIED MAIL: <span class="border-b border-gray-500"># __________________________</span></p>
+                    <p class="mb-1">TO: <span id="pLandlord" class="border-b border-gray-500 italic preview-text">________________</span></p>
+                    <p class="mb-10">FROM: <span id="pTenant" class="border-b border-gray-500 italic preview-text">________________</span></p>
+                    <p class="font-bold mb-6 uppercase tracking-tight">RE: <span id="pSubject">FORMAL NOTICE TO REPAIR - TX PROPERTY CODE § 92.056</span></p>
+                    <p class="mb-4">Dear Management,</p>
+                    <p id="introParagraph" class="mb-4 text-justify">This letter serves as formal notice that a condition exists at <span id="pAddress" class="preview-text underline underline-offset-4">________________</span> which affects the health or safety of a tenant.</p>
+                    <p class="mb-6 font-bold italic text-lg uppercase">ISSUE: <span id="pIssue" class="preview-text">NO HOT WATER</span></p>
+                    <p id="closingParagraph" class="mb-8 text-xs italic opacity-70">This is my formal request to repair the condition promptly.</p>
+                    <p>Sincerely,</p>
+                    <p class="mt-8 font-bold text-lg" id="pSign">________________</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="arsenal" class="max-w-7xl mx-auto py-12 px-6 border-t border-zinc-900 mb-20">
+        <h3 class="text-4xl font-heading uppercase mb-10 text-center text-white tracking-widest">The <span class="text-purple-700">Arsenal</span></h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl">
+                <h4 class="text-xl font-heading text-white mb-4 uppercase">1. Evidence Log</h4>
+                <table class="w-full text-[10px] text-purple-300 mb-4">
+                    <tbody id="logTable">
+                        <tr class="border-b border-zinc-800/50">
+                            <td><input type="text" placeholder="Date" class="bg-transparent border-none w-full p-1 focus:outline-none"></td>
+                            <td><input type="text" placeholder="Method" class="bg-transparent border-none w-full p-1 focus:outline-none"></td>
+                            <td><input type="text" placeholder="Notes..." class="bg-transparent border-none w-full p-1 focus:outline-none"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button onclick="addRow()" class="text-[10px] uppercase font-bold text-purple-500">+ Add Entry</button>
+            </div>
+            <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl text-center">
+                <h4 class="text-xl font-heading text-white mb-4 uppercase">2. Constable Finder</h4>
+                <div class="space-y-3">
+                    <a href="https://www.harriscountytx.gov/Government/Constables" target="_blank" class="block bg-black/50 border border-zinc-700 p-3 rounded text-[10px] uppercase font-bold text-white hover:border-purple-500">Harris County (Baytown)</a>
+                    <a href="https://www.co.chambers.tx.us/page/constables" target="_blank" class="block bg-black/50 border border-zinc-700 p-3 rounded text-[10px] uppercase font-bold text-white hover:border-purple-500">Chambers County</a>
+                </div>
+            </div>
+            <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl">
+                <h4 class="text-xl font-heading text-white mb-4 uppercase">3. The Paper Trail</h4>
+                <ul class="text-[10px] space-y-2 text-purple-300 uppercase font-bold mb-6">
+                    <li>✔️ Request "Certified Mail"</li>
+                    <li>✔️ Ask for "Return Receipt Requested"</li>
+                    <li>✔️ Keep your tracking number</li>
+                </ul>
+                <a href="delivery.html" class="block text-center text-[10px] py-2 border border-purple-700 text-white font-bold uppercase hover:bg-purple-700 transition">View Delivery Guide</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-12 border-t border-zinc-900 bg-black/90 text-center">
+        <div class="max-w-3xl mx-auto space-y-4">
+            <p class="text-[10px] text-zinc-500 uppercase tracking-widest leading-relaxed">
+                <span class="text-white font-bold">LEGAL DISCLAIMER:</span> Stay Dangerous is an automated document preparation platform. We are <span class="text-purple-700">not a law firm</span>. This tool provides information based on Texas Property Code § 92.056.
+            </p>
+            <p class="text-[9px] text-purple-600 uppercase font-bold pt-4 border-t border-zinc-900/50 tracking-[0.1em]">
+                © 2026 STAY DANGEROUS TEXAS. ALL RIGHTS RESERVED. POWERED BY THE TRUTH.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function updatePreview() {
+            const name = document.getElementById('tenantName').value || "________________";
+            const landlord = document.getElementById('landlordName').value || "________________";
+            const addr = document.getElementById('tenantAddress').value || "________________";
+            const issue = document.getElementById('issue').value;
+
+            const pDate = document.getElementById('pDate'), pLandlord = document.getElementById('pLandlord'), pTenant = document.getElementById('pTenant'), pAddress = document.getElementById('pAddress'), pIssue = document.getElementById('pIssue'), pSign = document.getElementById('pSign'), pSubject = document.getElementById('pSubject'), intro = document.getElementById('introParagraph'), closing = document.getElementById('closingParagraph');
+
+            pDate.innerText = new Date().toLocaleDateString();
+            pLandlord.innerText = landlord; pTenant.innerText = name; pAddress.innerText = addr; pIssue.innerText = issue.toUpperCase(); pSign.innerText = name;
+
+            const purple = "#7e22ce";
+            [pDate, pLandlord, pTenant, pAddress, pIssue, pSign].forEach(el => el.style.color = purple);
+
+            if (issue.includes("Retaliation") || issue.includes("Harassment")) {
+                pSubject.innerText = "FORMAL COMPLAINT REGARDING LANDLORD CONDUCT";
+                intro.innerHTML = `This letter serves as a formal complaint regarding actions taken at <span style="color:${purple}; font-weight:bold;">${addr}</span> that violate my rights under the Texas Property Code.`;
+                closing.innerText = "I demand that these actions cease immediately. I reserve all legal rights regarding this matter.";
+            } else if (issue.includes("Accommodation")) {
+                pSubject.innerText = "REQUEST FOR REASONABLE ACCOMMODATION - FAIR HOUSING ACT";
+                intro.innerHTML = `This letter is a formal request for a reasonable accommodation under the Fair Housing Act regarding my tenancy at <span style="color:${purple}; font-weight:bold;">${addr}</span>.`;
+                closing.innerText = "Please provide a written response to this request within a reasonable timeframe.";
+            } else {
+                pSubject.innerText = "FORMAL NOTICE TO REPAIR - TX PROPERTY CODE § 92.056";
+                intro.innerHTML = `This letter serves as formal notice that a condition exists at <span style="color:${purple}; font-weight:bold;">${addr}</span> which materially affects the physical health or safety of an ordinary tenant.`;
+                closing.innerText = "This is my formal request to repair the condition. I look forward to your response within the timeframe required by law.";
+            }
+        }
+
+        function addRow() {
+            const table = document.getElementById("logTable");
+            const row = table.insertRow();
+            row.className = "border-b border-zinc-800/50";
+            row.innerHTML = `<td><input type="text" placeholder="Date" class="bg-transparent border-none w-full p-1 focus:outline-none text-purple-300"></td><td><input type="text" placeholder="Method" class="bg-transparent border-none w-full p-1 focus:outline-none text-purple-300"></td><td><input type="text" placeholder="Notes..." class="bg-transparent border-none w-full p-1 focus:outline-none text-purple-300"></td>`;
+        }
+
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const tName = document.getElementById('tenantName').value;
+            const lName = document.getElementById('landlordName').value;
+            const tAddr = document.getElementById('tenantAddress').value;
+            const issue = document.getElementById('issue').value;
+            if(!tName || !lName || !tAddr) { alert("Please fill in all fields."); return; }
+            doc.setFontSize(10);
+            doc.text(`DATE: ${new Date().toLocaleDateString()}`, 20, 20);
+            doc.text(`CERTIFIED MAIL: # __________________________`, 20, 30);
+            doc.text(`TO: ${lName}`, 20, 45);
+            doc.text(`FROM: ${tName}`, 20, 55);
+            doc.setFont("helvetica", "bold");
+            doc.text(`RE: ${issue.toUpperCase()}`, 20, 75);
+            doc.setFont("helvetica", "normal");
+            const body = `Property: ${tAddr}\n\nThis letter serves as formal notice regarding ${issue}. Please address this matter immediately as required by the Texas Property Code and/or Federal Law.`;
+            doc.text(doc.splitTextToSize(body, 170), 20, 85);
+            doc.text("Sincerely,", 20, 130);
+            doc.text(tName, 20, 140);
+            doc.save("Stay_Dangerous_Notice.pdf");
+        }
+        window.onload = updatePreview;
+    </script>
+</body>
+</html>

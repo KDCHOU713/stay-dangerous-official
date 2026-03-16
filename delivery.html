@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Paper Trail | Stay Dangerous Delivery Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .watermark { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            object-fit: contain; z-index: -1; pointer-events: none; 
+            opacity: 0.1;
+            filter: drop-shadow(0 0 1px #7e22ce);
+        }
+        .font-heading { font-family: 'Oswald', sans-serif; }
+        .step-card { 
+            background: rgba(24, 24, 27, 0.8);
+            border: 1px solid #3f3f46;
+            transition: all 0.3s ease;
+        }
+        .step-card:hover { border-color: #7e22ce; }
+        .green-card-accent { color: #22c55e; } /* "Green Card" reference color */
+    </style>
+</head>
+<body class="bg-black text-zinc-300 font-sans">
+
+    <img src="brand-logo.jpg" class="watermark" alt="Stay Dangerous Logo">
+
+    <nav class="p-4 border-b border-zinc-900 flex justify-end items-center bg-black/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="space-x-6 uppercase text-xs tracking-widest font-bold">
+            <a href="index.html" class="hover:text-white text-purple-500 transition">Home</a>
+            <a href="about.html" class="hover:text-white text-purple-500 transition">The Mission</a>
+            <a href="delivery.html" class="text-white underline underline-offset-8">Delivery Guide</a>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-16 px-6">
+        
+        <header class="mb-16">
+            <h1 class="text-5xl md:text-7xl font-heading uppercase text-white mb-4">The Paper <span class="text-purple-700">Trail</span></h1>
+            <p class="text-xl text-zinc-500 uppercase tracking-widest italic">If you can't prove it, it never happened.</p>
+        </header>
+
+        <div class="space-y-8">
+            
+            <div class="step-card p-8 rounded-lg">
+                <div class="flex items-start gap-6">
+                    <span class="text-5xl font-heading text-purple-900">01</span>
+                    <div>
+                        <h2 class="text-2xl font-heading text-white uppercase mb-2">Print Two Copies</h2>
+                        <p>One copy goes to the landlord. One copy stays with you in a safe place. Never give away your only original.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card p-8 rounded-lg border-l-4 border-l-purple-700">
+                <div class="flex items-start gap-6">
+                    <span class="text-5xl font-heading text-purple-900">02</span>
+                    <div>
+                        <h2 class="text-2xl font-heading text-white uppercase mb-2">The USPS Counter</h2>
+                        <p class="mb-4">Go to any United States Post Office. Do not use a drop box. Hand the envelope to the clerk and use these exact words:</p>
+                        <div class="bg-black p-4 border border-zinc-800 rounded italic text-purple-400">
+                            "I need to send this <span class="text-white font-bold">Certified Mail</span> with <span class="text-white font-bold">Return Receipt Requested</span>."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card p-8 rounded-lg">
+                <div class="flex items-start gap-6">
+                    <span class="text-5xl font-heading text-purple-900">03</span>
+                    <div>
+                        <h2 class="text-2xl font-heading text-white uppercase mb-2">The "Green Card" (Form 3811)</h2>
+                        <p class="mb-4 text-zinc-400">The clerk will give you a green postcard to fill out. This gets attached to your envelope. When the landlord signs for the letter, the USPS will mail this green card back to you.</p>
+                        <p class="text-green-500 font-bold uppercase text-xs">This card is your "Checkmate" in court.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card p-8 rounded-lg">
+                <div class="flex items-start gap-6">
+                    <span class="text-5xl font-heading text-purple-900">04</span>
+                    <div>
+                        <h2 class="text-2xl font-heading text-white uppercase mb-2">Log the Number</h2>
+                        <p>Take the tracking number from your receipt and write it on your personal copy of the letter. Go back to the <a href="index.html#arsenal" class="text-purple-500 underline">Evidence Log</a> and record the date of mailing.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-20 p-10 bg-purple-900/10 border border-purple-900/40 text-center">
+            <h3 class="font-heading text-white text-3xl uppercase mb-4">Why we do this</h3>
+            <p class="max-w-2xl mx-auto text-sm leading-relaxed italic text-zinc-400">
+                Under Texas Property Code § 92.056, the timeframes for repairs often start from the moment the landlord receives notice. If you send it via Certified Mail, the law presumes they received it. It ends the "he-said, she-said" game forever.
+            </p>
+        </div>
+
+    </main>
+
+    <footer class="p-12 text-center border-t border-zinc-900 mt-20">
+        <a href="index.html" class="font-heading text-purple-700 hover:text-white transition uppercase tracking-widest text-xl">Return to the Arsenal</a>
+        <p class="text-[9px] uppercase tracking-[0.4em] text-zinc-800 mt-8">STAY DANGEROUS | BAYTOWN TX</p>
+    </footer>
+
+</body>
+</html>
