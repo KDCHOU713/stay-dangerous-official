@@ -2,218 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stay Dangerous | Texas Tenant Rights</title>
+    <title>Stay Dangerous Test</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .watermark { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            object-fit: contain; z-index: -1; pointer-events: none; 
-            opacity: 0.12;
-            filter: drop-shadow(0 0 1px #7e22ce) drop-shadow(0 0 5px rgba(126, 34, 206, 0.3));
-        }
-        input, select { 
-            background: rgba(0, 0, 0, 0.7) !important; 
-            border: 1px solid #7e22ce !important; 
-            color: #a855f7 !important; 
-        }
-        input::placeholder { color: #581c87; }
-        .font-heading { font-family: 'Oswald', sans-serif; }
-        select option { background: #000; color: #a855f7; }
-        
-        /* THE GRAY PAPER LOCK */
-        .smoke-paper {
-            background-color: #d1d1d1 !important;
-            color: #1a1a1a !important;
-            border: 4px solid #7e22ce !important;
-            box-shadow: 0 0 30px rgba(126, 34, 206, 0.5) !important;
-        }
+        /* Forced Gray Paper */
+        .paper { background-color: #d1d1d1 !important; color: #1a1a1a !important; padding: 40px; border: 4px solid #7e22ce; }
+        .purple-text { color: #7e22ce !important; font-weight: bold; }
     </style>
 </head>
-<body class="bg-black text-purple-600 font-sans">
+<body class="bg-black p-10">
 
-    <img src="brand-logo.jpg" class="watermark" alt="Stay Dangerous Logo">
-
-    <nav class="p-4 border-b border-zinc-900 flex justify-end items-center bg-black/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="space-x-6 uppercase text-xs tracking-widest font-bold">
-            <a href="index.html" class="text-white underline">Home</a>
-            <a href="about.html" class="hover:text-white text-purple-500 transition">The Mission</a>
-            <a href="delivery.html" class="hover:text-white text-purple-500 transition">Delivery Guide</a>
-            <a href="privacy.html" class="hover:text-white text-gray-500 transition">Privacy</a>
-        </div>
-    </nav>
-
-    <header class="py-12 text-center px-4">
-        <h1 class="text-5xl md:text-7xl font-heading uppercase mb-4 text-purple-700 font-bold tracking-tight text-shadow-lg">The system counts on your silence.</h1>
-        <h2 class="text-2xl md:text-3xl text-white font-heading uppercase mb-8 italic tracking-wide">We count on your knowledge.</h2>
-    </header>
-
-    <main class="max-w-7xl mx-auto py-10 px-6 mb-20">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+        
+        <div class="bg-zinc-900 p-6 rounded shadow-xl border border-purple-500">
+            <label class="block text-white text-xs mb-2 uppercase">Full Name</label>
+            <input type="text" id="tenantName" oninput="forceUpdate()" class="w-full mb-4 p-2 bg-black text-purple-400 border border-purple-900">
             
-            <div class="bg-black/40 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-2xl">
-                <h3 class="text-3xl font-heading uppercase mb-8 border-b-2 border-white pb-2 inline-block text-purple-700 font-bold">Notice Generator</h3>
-                <form id="noticeForm" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block uppercase text-[10px] font-bold text-white mb-2">Full Name</label>
-                            <input type="text" id="tenantName" oninput="updateAll()" placeholder="Your Name" class="w-full p-4 rounded outline-none">
-                        </div>
-                        <div>
-                            <label class="block uppercase text-[10px] font-bold text-white mb-2">Landlord/Management</label>
-                            <input type="text" id="landlordName" oninput="updateAll()" placeholder="Management Name" class="w-full p-4 rounded outline-none">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block uppercase text-[10px] font-bold text-white mb-2">Your Address</label>
-                        <input type="text" id="tenantAddress" oninput="updateAll()" placeholder="123 Main St, Baytown, TX" class="w-full p-4 rounded outline-none">
-                    </div>
-                    <div>
-                        <label class="block uppercase text-[10px] font-bold text-white mb-2">Select Issue</label>
-                        <select id="issueSelect" onchange="updateAll()" class="w-full p-4 rounded outline-none">
-                            <optgroup label="Critical Repairs">
-                                <option value="No Hot Water">No Hot Water</option>
-                                <option value="Broken AC (Health Hazard)">Broken AC (Health Hazard)</option>
-                                <option value="No Electricity/Power">No Electricity/Power</option>
-                            </optgroup>
-                            <optgroup label="Health & Safety">
-                                <option value="Active Mold Growth">Active Mold Growth</option>
-                                <option value="Pest/Rodent Infestation">Pest/Rodent Infestation</option>
-                                <option value="Roof or Ceiling Leak">Roof or Ceiling Leak</option>
-                            </optgroup>
-                            <optgroup label="Legal Protections">
-                                <option value="Reasonable Accommodation Request">Reasonable Accommodation Request</option>
-                                <option value="Formal Complaint: Retaliation">Formal Complaint: Retaliation</option>
-                                <option value="Formal Complaint: Harassment">Formal Complaint: Harassment</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                    <button type="button" onclick="generatePDF()" class="w-full bg-purple-700 text-white font-heading py-5 text-2xl uppercase hover:bg-white hover:text-purple-900 transition shadow-xl font-bold">
-                        Download Official PDF
-                    </button>
-                </form>
-            </div>
-
-            <div class="sticky top-24">
-                <h3 class="text-xl font-heading uppercase mb-4 text-white opacity-50 text-center">Live Preview</h3>
-                <div id="previewBox" class="smoke-paper p-10 min-h-[500px] text-sm font-serif leading-relaxed relative rounded">
-                    <p class="font-bold mb-2">DATE: <span id="pDate"></span></p>
-                    <p class="text-[10px] font-bold mb-6 text-zinc-600 uppercase">CERTIFIED MAIL: # __________________________</p>
-                    <p class="mb-1">TO: <span id="pLandlord" style="color:#7e22ce; font-weight:bold;">________________</span></p>
-                    <p class="mb-10">FROM: <span id="pTenant" style="color:#7e22ce; font-weight:bold;">________________</span></p>
-                    <p id="pSubject" class="font-bold mb-6 uppercase tracking-tight">RE: FORMAL NOTICE TO REPAIR</p>
-                    <p class="mb-4">Dear Management,</p>
-                    <p id="pIntro" class="mb-4 text-justify">This letter serves as formal notice regarding property conditions at <span id="pAddress" style="color:#7e22ce; font-weight:bold;">________________</span>.</p>
-                    <p class="mb-6 font-bold italic text-lg uppercase underline decoration-purple-500">ISSUE: <span id="pIssue">NO HOT WATER</span></p>
-                    <p id="pClosing" class="mb-8 text-xs italic opacity-70">This is my formal request to repair the condition promptly.</p>
-                    <p>Sincerely,</p>
-                    <p class="mt-8 font-bold text-lg" id="pSign">________________</p>
-                </div>
-            </div>
+            <label class="block text-white text-xs mb-2 uppercase">Select Issue</label>
+            <select id="issueSelect" onchange="forceUpdate()" class="w-full p-2 bg-black text-purple-400 border border-purple-900">
+                <option value="No Hot Water">No Hot Water</option>
+                <option value="Broken AC">Broken AC</option>
+                <option value="Mold Growth">Mold Growth</option>
+                <option value="Retaliation">Retaliation</option>
+            </select>
         </div>
-    </main>
 
-    <section id="arsenal" class="max-w-7xl mx-auto py-12 px-6 border-t border-zinc-900 mb-20">
-        <h3 class="text-4xl font-heading uppercase mb-10 text-center text-white tracking-widest">The <span class="text-purple-700">Arsenal</span></h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl">
-                <h4 class="text-xl font-heading text-white mb-4 uppercase tracking-tighter">1. Evidence Log</h4>
-                <table class="w-full text-[10px] text-purple-300 mb-4">
-                    <tbody id="logTable">
-                        <tr class="border-b border-zinc-800/50">
-                            <td><input type="text" placeholder="Date" class="bg-transparent border-none w-full p-1 focus:outline-none text-purple-300"></td>
-                            <td><input type="text" placeholder="Notes..." class="bg-transparent border-none w-full p-1 focus:outline-none text-purple-300"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button onclick="addRow()" class="text-[10px] uppercase font-bold text-purple-500">+ Add Entry</button>
-            </div>
-            <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl text-center">
-                <h4 class="text-xl font-heading text-white mb-4 uppercase tracking-tighter">2. Constable Finder</h4>
-                <div class="space-y-3">
-                    <a href="https://www.harriscountytx.gov/Government/Constables" target="_blank" class="block bg-black/50 border border-zinc-700 p-3 rounded text-[10px] uppercase font-bold text-white hover:border-purple-500 transition">Harris County</a>
-                    <a href="https://www.co.chambers.tx.us/page/constables" target="_blank" class="block bg-black/50 border border-zinc-700 p-3 rounded text-[10px] uppercase font-bold text-white hover:border-purple-500 transition">Chambers County</a>
-                </div>
-            </div>
-            <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl">
-                <h4 class="text-xl font-heading text-white mb-4 uppercase tracking-tighter">3. The Paper Trail</h4>
-                <p class="text-[10px] text-purple-400 mb-6 uppercase font-bold italic leading-tight">Always request a return receipt.</p>
-                <a href="delivery.html" class="block text-center text-[10px] py-3 bg-purple-700 text-white font-bold uppercase hover:bg-white hover:text-purple-900 transition rounded">View Delivery Guide</a>
-            </div>
+        <div class="paper">
+            <p>TO: Management</p>
+            <p>FROM: <span id="pTenant" class="purple-text">________________</span></p>
+            <p class="mt-4 font-bold underline">RE: <span id="pSubject">NOTICE TO REPAIR</span></p>
+            <p class="mt-4 italic text-xl">ISSUE: <span id="pIssue" class="purple-text">NO HOT WATER</span></p>
         </div>
-    </section>
 
-    <footer class="p-12 border-t border-zinc-900 bg-black/90 text-center">
-        <p class="text-[10px] text-zinc-500 uppercase tracking-widest">
-            Stay Dangerous © 2026 | Truth Over Everything.
-        </p>
-    </footer>
+    </div>
 
     <script>
-        function updateAll() {
-            // Get inputs
-            const name = document.getElementById('tenantName').value || "________________";
-            const landlord = document.getElementById('landlordName').value || "________________";
-            const addr = document.getElementById('tenantAddress').value || "________________";
-            const issue = document.getElementById('issueSelect').value;
+        function forceUpdate() {
+            // 1. Get the values
+            var nameInput = document.getElementById('tenantName').value;
+            var issueInput = document.getElementById('issueSelect').value;
 
-            // Update paper
-            document.getElementById('pDate').innerText = new Date().toLocaleDateString();
-            document.getElementById('pLandlord').innerText = landlord;
-            document.getElementById('pTenant').innerText = name;
-            document.getElementById('pAddress').innerText = addr;
-            document.getElementById('pSign').innerText = name;
-            
-            // FORCE UPDATE ISSUE TEXT
-            document.getElementById('pIssue').innerText = issue.toUpperCase();
+            // 2. Debugging (Check your browser console!)
+            console.log("Selected Issue is: " + issueInput);
 
-            const purple = "#7e22ce";
-            const subject = document.getElementById('pSubject');
-            const intro = document.getElementById('pIntro');
-            const closing = document.getElementById('pClosing');
+            // 3. Update the Preview
+            document.getElementById('pTenant').innerText = nameInput || "________________";
+            document.getElementById('pIssue').innerText = issueInput.toUpperCase();
 
-            if (issue.includes("Retaliation") || issue.includes("Harassment")) {
-                subject.innerText = "FORMAL COMPLAINT REGARDING LANDLORD CONDUCT";
-                intro.innerHTML = `This letter serves as a formal complaint regarding actions taken at <span style="color:${purple}; font-weight:bold;">${addr}</span>.`;
-                closing.innerText = "I demand that these actions cease immediately.";
-            } else if (issue.includes("Accommodation")) {
-                subject.innerText = "REQUEST FOR REASONABLE ACCOMMODATION";
-                intro.innerHTML = `This letter is a formal request for an accommodation at <span style="color:${purple}; font-weight:bold;">${addr}</span>.`;
-                closing.innerText = "Please provide a response within a reasonable timeframe.";
+            // 4. Update the Subject line based on the issue
+            var subjectBox = document.getElementById('pSubject');
+            if (issueInput === "Retaliation") {
+                subjectBox.innerText = "FORMAL COMPLAINT: RETALIATION";
             } else {
-                subject.innerText = "FORMAL NOTICE TO REPAIR - TX PROPERTY CODE § 92.056";
-                intro.innerHTML = `This letter serves as formal notice that a condition exists at <span style="color:${purple}; font-weight:bold;">${addr}</span> which affects safety.`;
-                closing.innerText = "This is my formal request to repair the condition promptly.";
+                subjectBox.innerText = "NOTICE TO REPAIR - TX CODE 92.056";
             }
         }
-
-        function addRow() {
-            const table = document.getElementById("logTable");
-            const row = table.insertRow();
-            row.className = "border-b border-zinc-800/50";
-            row.innerHTML = `<td><input type="text" placeholder="Date" class="bg-transparent border-none w-full p-1 text-purple-300 focus:outline-none"></td><td><input type="text" placeholder="Notes..." class="bg-transparent border-none w-full p-1 text-purple-300 focus:outline-none"></td>`;
-        }
-
-        function generatePDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            const n = document.getElementById('tenantName').value;
-            const l = document.getElementById('landlordName').value;
-            const a = document.getElementById('tenantAddress').value;
-            const i = document.getElementById('issueSelect').value;
-            if(!n || !l || !a) { alert("Please fill all fields."); return; }
-            doc.text("NOTICE TO REPAIR", 20, 20);
-            doc.text(`TO: ${l}`, 20, 40);
-            doc.text(`FROM: ${n}`, 20, 50);
-            doc.text(`ISSUE: ${i.toUpperCase()}`, 20, 70);
-            doc.text(`PROPERTY: ${a}`, 20, 80);
-            doc.save("Notice.pdf");
-        }
-
-        // Trigger on load
-        window.onload = updateAll;
+        
+        // Run once on load to set it up
+        window.onload = forceUpdate;
     </script>
 </body>
 </html>
