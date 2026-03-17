@@ -7,83 +7,55 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        .font-heading { font-family: 'Oswald', sans-serif; }
+        /* FORCING THE PURPLE */
+        .solid-purple { color: #7e22ce !important; text-shadow: 0 0 10px rgba(126, 34, 206, 0.5); }
+        
         .watermark { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            object-fit: contain; z-index: -1; pointer-events: none; 
-            opacity: 0.12;
-            filter: drop-shadow(0 0 1px #7e22ce);
-        }
-        .font-heading { font-family: 'Oswald', sans-serif; }
-        .text-gradient {
-            background: linear-gradient(to bottom, #ffffff, #7e22ce);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            object-fit: contain; z-index: -1; pointer-events: none; opacity: 0.05;
         }
     </style>
 </head>
-<body class="bg-black text-zinc-300 font-sans leading-relaxed">
+<body class="bg-black text-zinc-400 font-sans">
 
     <img src="brand-logo.jpg" class="watermark" alt="Stay Dangerous Logo">
 
     <nav class="p-4 border-b border-zinc-900 flex justify-end items-center bg-black/80 backdrop-blur-md sticky top-0 z-50">
         <div class="space-x-6 uppercase text-xs tracking-widest font-bold">
             <a href="index.html" class="hover:text-white text-purple-500 transition">Home</a>
-            <a href="about.html" class="text-white underline underline-offset-8">The Mission</a>
+            <a href="about.html" class="text-white underline">The Mission</a>
+            <a href="delivery.html" class="hover:text-white text-purple-500 transition">Delivery Guide</a>
             <a href="privacy.html" class="hover:text-white text-gray-500 transition">Privacy</a>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto py-20 px-6">
-        
-        <h1 class="text-6xl md:text-8xl font-heading uppercase text-gradient mb-8 tracking-tighter">
-            Knowledge is the <br>only weapon.
+    <header class="py-20 text-center px-6">
+        <h1 class="text-4xl md:text-6xl font-heading uppercase leading-tight text-white">
+            <span class="solid-purple">KNOWLEDGE</span> IS THE <br>
+            <span class="solid-purple">ONLY</span> EFFECTIVE <br>
+            <span class="solid-purple">WEAPON</span>.
         </h1>
+        <div class="w-24 h-1 bg-purple-700 mx-auto mt-8"></div>
+    </header>
 
-        <div class="space-y-12 text-lg">
-            
-            <section>
-                <h2 class="text-purple-600 font-heading uppercase text-2xl mb-4 tracking-widest italic">— The Hard Truth</h2>
-                <p class="mb-6">
-                    They don't teach you the <span class="text-white font-bold underline decoration-purple-700">Constitution</span> in school. They don't teach you how to read a lease agreement. They teach you how to be a clog in the machine and how to pay your bills on time without asking questions. 
-                </p>
-                <p>
-                    Everything around you is a marketing scheme designed to keep you comfortable, compliant, and quiet. While you're distracted by the noise, the system is quietly cashing in on your lack of information. 
-                </p>
-            </section>
+    <main class="max-w-3xl mx-auto px-6 pb-24 space-y-12">
+        <section>
+            <h3 class="text-purple-700 font-heading uppercase text-2xl mb-4 italic">The Reality</h3>
+            <p class="leading-relaxed text-lg">
+                In the state of Texas, the law is often written in a way that favors those with the most resources. Landlords count on tenants being too busy, too tired, or too intimidated to look up their rights. They count on your silence to save them money.
+            </p>
+        </section>
 
-            <section class="border-l-4 border-purple-800 pl-8 py-4 bg-zinc-900/20">
-                <h2 class="text-white font-heading uppercase text-2xl mb-4 tracking-widest">Why Stay Dangerous?</h2>
-                <p class="mb-6 italic">
-                    "Dangerous" doesn't mean violence. It means being <span class="text-purple-500 font-bold uppercase">un-manipulatable</span>. 
-                </p>
-                <p>
-                    When you know your rights, you become a liability to a corrupt landlord. When you have the law on your side and the paperwork to prove it, you stop being a victim and start being an obstacle. We built this tool in <span class="text-white font-bold">Baytown, Texas</span> because we saw the gap between what the law says and what people actually get.
-                </p>
-            </section>
+        <section class="bg-zinc-900/50 p-8 border-l-4 border-purple-700 rounded-r-xl">
+            <h3 class="text-white font-heading uppercase text-2xl mb-4">The Philosophy</h3>
+            <p class="leading-relaxed">
+                "Stay Dangerous" doesn't mean violence. It means being <span class="text-white font-bold">legally dangerous</span>. It means when a landlord ignores a repair, you don't just complain—you send a Chapter 92 certified notice. It means when they threaten an illegal eviction, you show up with the code in your hand. 
+            </p>
+        </main>
 
-            <section>
-                <h2 class="text-purple-600 font-heading uppercase text-2xl mb-4 tracking-widest italic">— The Game is Money</h2>
-                <p>
-                    The landlord-tenant relationship isn't a "community." It’s a business transaction. If they can save $500 by letting you live with mold, they will—unless you make it <span class="text-white">more expensive</span> for them to ignore you. That’s what Stay Dangerous does. We provide the "paper trail" that makes negligence too costly for the system to continue.
-                </p>
-            </section>
-
-            <div class="pt-10 border-t border-zinc-900">
-                <h3 class="font-heading text-4xl text-white uppercase mb-6 tracking-tighter">Get Woke to the Code.</h3>
-                <p class="text-sm uppercase tracking-widest text-zinc-500 mb-8">
-                    We aren't a law firm. We aren't your lawyers. <br>
-                    <span class="text-purple-700">We are the source for the truth they forgot to tell you.</span>
-                </p>
-                <a href="index.html" class="inline-block bg-purple-700 text-white font-heading px-8 py-4 text-xl uppercase hover:bg-white hover:text-black transition">
-                    Back to the Arsenal
-                </a>
-            </div>
-
-        </div>
-    </main>
-
-    <footer class="p-12 text-center border-t border-zinc-900 mt-20">
-        <p class="text-[10px] uppercase tracking-[0.4em] text-zinc-700">Stay Dangerous © 2026 | Truth Over Everything</p>
+    <footer class="p-12 border-t border-zinc-900 text-center text-[10px] uppercase tracking-widest">
+        Stay Dangerous © 2026 | Baytown, Texas
     </footer>
 
 </body>
