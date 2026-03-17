@@ -23,7 +23,7 @@
         .font-heading { font-family: 'Oswald', sans-serif; }
         select option { background: #000; color: #a855f7; }
         
-        /* The Glare-Killer Paper Styling */
+        /* THE GRAY PAPER LOCK */
         .smoke-paper {
             background-color: #d1d1d1 !important;
             color: #1a1a1a !important;
@@ -46,7 +46,7 @@
     </nav>
 
     <header class="py-12 text-center px-4">
-        <h1 class="text-5xl md:text-7xl font-heading uppercase mb-4 text-purple-700 font-bold tracking-tight">The system counts on your silence.</h1>
+        <h1 class="text-5xl md:text-7xl font-heading uppercase mb-4 text-purple-700 font-bold tracking-tight text-shadow-lg">The system counts on your silence.</h1>
         <h2 class="text-2xl md:text-3xl text-white font-heading uppercase mb-8 italic tracking-wide">We count on your knowledge.</h2>
     </header>
 
@@ -139,30 +139,34 @@
             </div>
             <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl">
                 <h4 class="text-xl font-heading text-white mb-4 uppercase tracking-tighter">3. The Paper Trail</h4>
-                <p class="text-[10px] text-purple-400 mb-6 uppercase font-bold leading-tight italic">Never mail a letter without a tracking number.</p>
-                <a href="delivery.html" class="block text-center text-[10px] py-3 bg-purple-700 text-white font-bold uppercase hover:bg-white hover:text-purple-900 transition rounded shadow-lg">View Delivery Guide</a>
+                <p class="text-[10px] text-purple-400 mb-6 uppercase font-bold italic leading-tight">Always request a return receipt.</p>
+                <a href="delivery.html" class="block text-center text-[10px] py-3 bg-purple-700 text-white font-bold uppercase hover:bg-white hover:text-purple-900 transition rounded">View Delivery Guide</a>
             </div>
         </div>
     </section>
 
     <footer class="p-12 border-t border-zinc-900 bg-black/90 text-center">
-        <p class="text-[10px] text-zinc-500 uppercase tracking-widest leading-relaxed">
-            LEGAL DISCLAIMER: Stay Dangerous is not a law firm. © 2026 STAY DANGEROUS TEXAS.
+        <p class="text-[10px] text-zinc-500 uppercase tracking-widest">
+            Stay Dangerous © 2026 | Truth Over Everything.
         </p>
     </footer>
 
     <script>
         function updateAll() {
+            // Get inputs
             const name = document.getElementById('tenantName').value || "________________";
             const landlord = document.getElementById('landlordName').value || "________________";
             const addr = document.getElementById('tenantAddress').value || "________________";
             const issue = document.getElementById('issueSelect').value;
 
+            // Update paper
             document.getElementById('pDate').innerText = new Date().toLocaleDateString();
             document.getElementById('pLandlord').innerText = landlord;
             document.getElementById('pTenant').innerText = name;
             document.getElementById('pAddress').innerText = addr;
             document.getElementById('pSign').innerText = name;
+            
+            // FORCE UPDATE ISSUE TEXT
             document.getElementById('pIssue').innerText = issue.toUpperCase();
 
             const purple = "#7e22ce";
@@ -172,12 +176,12 @@
 
             if (issue.includes("Retaliation") || issue.includes("Harassment")) {
                 subject.innerText = "FORMAL COMPLAINT REGARDING LANDLORD CONDUCT";
-                intro.innerHTML = `This letter serves as a formal complaint regarding actions taken at <span style="color:${purple}; font-weight:bold;">${addr}</span> that violate my rights.`;
-                closing.innerText = "I demand that these actions cease immediately. I reserve all legal rights.";
+                intro.innerHTML = `This letter serves as a formal complaint regarding actions taken at <span style="color:${purple}; font-weight:bold;">${addr}</span>.`;
+                closing.innerText = "I demand that these actions cease immediately.";
             } else if (issue.includes("Accommodation")) {
                 subject.innerText = "REQUEST FOR REASONABLE ACCOMMODATION";
-                intro.innerHTML = `This letter is a formal request for a reasonable accommodation at <span style="color:${purple}; font-weight:bold;">${addr}</span>.`;
-                closing.innerText = "Please provide a written response within a reasonable timeframe.";
+                intro.innerHTML = `This letter is a formal request for an accommodation at <span style="color:${purple}; font-weight:bold;">${addr}</span>.`;
+                closing.innerText = "Please provide a response within a reasonable timeframe.";
             } else {
                 subject.innerText = "FORMAL NOTICE TO REPAIR - TX PROPERTY CODE § 92.056";
                 intro.innerHTML = `This letter serves as formal notice that a condition exists at <span style="color:${purple}; font-weight:bold;">${addr}</span> which affects safety.`;
@@ -200,16 +204,15 @@
             const a = document.getElementById('tenantAddress').value;
             const i = document.getElementById('issueSelect').value;
             if(!n || !l || !a) { alert("Please fill all fields."); return; }
-            doc.setFontSize(10);
-            doc.text(`DATE: ${new Date().toLocaleDateString()}`, 20, 20);
+            doc.text("NOTICE TO REPAIR", 20, 20);
             doc.text(`TO: ${l}`, 20, 40);
             doc.text(`FROM: ${n}`, 20, 50);
-            doc.text(`RE: ${i.toUpperCase()}`, 20, 70);
+            doc.text(`ISSUE: ${i.toUpperCase()}`, 20, 70);
             doc.text(`PROPERTY: ${a}`, 20, 80);
-            doc.text("Sincerely,", 20, 110);
-            doc.text(n, 20, 120);
-            doc.save("StayDangerous_Notice.pdf");
+            doc.save("Notice.pdf");
         }
+
+        // Trigger on load
         window.onload = updateAll;
     </script>
 </body>
