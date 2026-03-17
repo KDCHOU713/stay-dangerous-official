@@ -12,16 +12,14 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             object-fit: contain; z-index: -1; pointer-events: none; 
             opacity: 0.12;
-            filter: drop-shadow(0 0 1px #7e22ce) drop-shadow(0 0 5px rgba(126, 34, 206, 0.3));
+            filter: drop-shadow(0 0 1px #7e22ce);
         }
         input, select { 
-            background: rgba(0, 0, 0, 0.6) !important; 
+            background: rgba(0, 0, 0, 0.8) !important; 
             border: 1px solid #7e22ce !important; 
             color: #a855f7 !important; 
         }
-        input::placeholder { color: #581c87; }
         .font-heading { font-family: 'Oswald', sans-serif; }
-        /* This ensures the select options are readable on dark mode */
         select option { background: #000; color: #a855f7; }
     </style>
 </head>
@@ -31,7 +29,7 @@
 
     <nav class="p-4 border-b border-zinc-900 flex justify-end items-center bg-black/80 backdrop-blur-md sticky top-0 z-50">
         <div class="space-x-6 uppercase text-xs tracking-widest font-bold">
-            <a href="index.html" class="text-white underline tracking-tighter">Home</a>
+            <a href="index.html" class="text-white underline">Home</a>
             <a href="about.html" class="hover:text-white text-purple-500 transition">The Mission</a>
             <a href="delivery.html" class="hover:text-white text-purple-500 transition">Delivery Guide</a>
             <a href="privacy.html" class="hover:text-white text-gray-500 transition">Privacy</a>
@@ -39,176 +37,156 @@
     </nav>
 
     <section class="py-12 text-center px-4">
-        <h1 class="text-5xl md:text-7xl font-heading uppercase mb-4 text-purple-700 font-bold tracking-tight">The system counts on your silence.</h1>
-        <h2 class="text-2xl md:text-3xl text-white font-heading uppercase mb-8 italic tracking-wide">We count on your knowledge.</h2>
+        <h1 class="text-5xl md:text-7xl font-heading uppercase mb-4 text-purple-700 font-bold tracking-tight">THE SYSTEM IS BROKEN.</h1>
+        <h2 class="text-2xl md:text-3xl text-white font-heading uppercase mb-8 italic tracking-wide">Stay Dangerous. Stay Informed.</h2>
     </section>
 
-    <section id="generator" class="max-w-7xl mx-auto py-10 px-6 mb-20">
+    <section class="max-w-7xl mx-auto py-10 px-6 mb-20">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
-            <div class="bg-black/40 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-2xl">
-                <h3 class="text-3xl font-heading uppercase mb-8 border-b-2 border-white pb-2 inline-block text-purple-700 font-bold">Notice Generator</h3>
-                <form id="noticeForm" class="space-y-6">
+            <div class="bg-black border border-purple-900/30 p-8 rounded-2xl shadow-2xl">
+                <h3 class="text-3xl font-heading uppercase mb-8 text-purple-700 font-bold">Notice Generator</h3>
+                <div class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block uppercase text-[10px] font-bold text-white tracking-widest mb-2">Full Name</label>
-                            <input type="text" id="tenantName" oninput="syncPreview()" placeholder="Your Name" class="w-full p-4 rounded outline-none focus:border-white transition">
+                            <label class="block uppercase text-[10px] font-bold text-white mb-2">Full Name</label>
+                            <input type="text" id="tNameInput" oninput="runTitaniumSync()" placeholder="Your Name" class="w-full p-4 rounded outline-none">
                         </div>
                         <div>
-                            <label class="block uppercase text-[10px] font-bold text-white tracking-widest mb-2">Landlord/Management</label>
-                            <input type="text" id="landlordName" oninput="syncPreview()" placeholder="Management Name" class="w-full p-4 rounded outline-none focus:border-white transition">
+                            <label class="block uppercase text-[10px] font-bold text-white mb-2">Landlord</label>
+                            <input type="text" id="lNameInput" oninput="runTitaniumSync()" placeholder="Management Name" class="w-full p-4 rounded outline-none">
                         </div>
                     </div>
                     <div>
-                        <label class="block uppercase text-[10px] font-bold text-white tracking-widest mb-2">Your Address</label>
-                        <input type="text" id="tenantAddress" oninput="syncPreview()" placeholder="123 Main St, Baytown, TX" class="w-full p-4 rounded outline-none focus:border-white transition">
+                        <label class="block uppercase text-[10px] font-bold text-white mb-2">Your Address</label>
+                        <input type="text" id="tAddrInput" oninput="runTitaniumSync()" placeholder="123 Main St, Baytown, TX" class="w-full p-4 rounded outline-none">
                     </div>
                     <div>
-                        <label class="block uppercase text-[10px] font-bold text-white tracking-widest mb-2">Select Issue</label>
-                        <select id="issueSelect" onchange="syncPreview()" class="w-full p-4 rounded outline-none focus:border-white transition">
-                            <optgroup label="Critical Repairs">
-                                <option value="No Hot Water">No Hot Water</option>
-                                <option value="Broken AC (Health Hazard)">Broken AC (Health Hazard)</option>
-                                <option value="No Electricity/Power">No Electricity/Power</option>
-                            </optgroup>
-                            <optgroup label="Health & Safety">
-                                <option value="Active Mold Growth">Active Mold Growth</option>
-                                <option value="Pest/Rodent Infestation">Pest/Rodent Infestation</option>
-                                <option value="Roof or Ceiling Leak">Roof or Ceiling Leak</option>
-                            </optgroup>
-                            <optgroup label="Legal Protections">
-                                <option value="Reasonable Accommodation Request">Reasonable Accommodation Request</option>
-                                <option value="Formal Complaint: Retaliation">Formal Complaint: Retaliation</option>
-                                <option value="Formal Complaint: Harassment">Formal Complaint: Harassment</option>
-                            </optgroup>
+                        <label class="block uppercase text-[10px] font-bold text-white mb-2">Select Issue</label>
+                        <select id="tIssueSelect" onchange="runTitaniumSync()" class="w-full p-4 rounded outline-none">
+                            <option value="No Hot Water">No Hot Water</option>
+                            <option value="Broken AC (Health Hazard)">Broken AC (Health Hazard)</option>
+                            <option value="No Electricity/Power">No Electricity/Power</option>
+                            <option value="Active Mold Growth">Active Mold Growth</option>
+                            <option value="Pest/Rodent Infestation">Pest/Rodent Infestation</option>
+                            <option value="Roof or Ceiling Leak">Roof or Ceiling Leak</option>
+                            <option value="Reasonable Accommodation Request">Reasonable Accommodation Request</option>
+                            <option value="Formal Complaint: Retaliation">Formal Complaint: Retaliation</option>
+                            <option value="Formal Complaint: Harassment">Formal Complaint: Harassment</option>
                         </select>
                     </div>
-                    <button type="button" onclick="generatePDF()" class="w-full bg-purple-700 text-white font-heading py-5 text-2xl uppercase hover:bg-white hover:text-purple-900 transition shadow-xl font-bold">
+                    <button type="button" onclick="downloadTitaniumPDF()" class="w-full bg-purple-700 text-white font-heading py-5 text-2xl uppercase hover:bg-white hover:text-black transition shadow-xl font-bold">
                         Download Official PDF
                     </button>
-                </form>
+                </div>
             </div>
 
             <div class="sticky top-24">
-                <h3 class="text-xl font-heading uppercase mb-4 text-white opacity-50 tracking-widest text-center">Live Preview</h3>
-                <div id="previewBox" style="background-color: #d1d1d1 !important; color: #1a1a1a !important; border: 4px solid #7e22ce !important; box-shadow: 0 0 30px rgba(126, 34, 206, 0.6) !important;" class="p-10 min-h-[500px] text-sm font-serif leading-relaxed relative rounded">
-                    <p class="font-bold mb-2">DATE: <span id="pDate"></span></p>
-                    <p class="text-[10px] font-bold mb-6 text-zinc-600 uppercase">CERTIFIED MAIL: <span class="border-b border-gray-500"># __________________________</span></p>
-                    <p class="mb-1">TO: <span id="pLandlord" class="border-b border-gray-500 italic">________________</span></p>
-                    <p class="mb-10">FROM: <span id="pTenant" class="border-b border-gray-500 italic">________________</span></p>
-                    <p class="font-bold mb-6 uppercase tracking-tight">RE: <span id="pSubject">FORMAL NOTICE TO REPAIR</span></p>
+                <h3 class="text-xl font-heading uppercase mb-4 text-white opacity-50 text-center">Live Preview</h3>
+                <div id="titaniumPreviewBox" style="background-color: #d1d1d1 !important; color: #1a1a1a !important; border: 4px solid #7e22ce !important;" class="p-10 min-h-[500px] text-sm font-serif leading-relaxed relative rounded shadow-[0_0_30px_rgba(126,34,206,0.4)]">
+                    <p class="font-bold mb-2">DATE: <span id="dispDate"></span></p>
+                    <p class="text-[10px] font-bold mb-6 text-zinc-600 uppercase italic">CERTIFIED MAIL: # __________________________</p>
+                    <p class="mb-1">TO: <span id="dispLandlord" style="color:#7e22ce; font-weight:bold;">________________</span></p>
+                    <p class="mb-10">FROM: <span id="dispTenant" style="color:#7e22ce; font-weight:bold;">________________</span></p>
+                    <p id="dispSubject" class="font-bold mb-6 uppercase tracking-tight">RE: FORMAL NOTICE TO REPAIR</p>
                     <p class="mb-4">Dear Management,</p>
-                    <p id="introParagraph" class="mb-4 text-justify">This letter serves as formal notice regarding conditions at <span id="pAddress">________________</span>.</p>
-                    <p class="mb-6 font-bold italic text-lg uppercase">ISSUE: <span id="pIssue">NO HOT WATER</span></p>
-                    <p id="closingParagraph" class="mb-8 text-xs italic opacity-70">This is my formal request to repair the condition promptly.</p>
+                    <p id="dispIntro" class="mb-4 text-justify">This letter serves as formal notice regarding the property at <span id="dispAddress" style="color:#7e22ce; font-weight:bold;">________________</span>.</p>
+                    <p class="mb-6 font-bold italic text-lg uppercase underline decoration-purple-500">ISSUE: <span id="dispIssue">NO HOT WATER</span></p>
+                    <p id="dispClosing" class="mb-8 text-xs italic opacity-80">This is my formal request to repair the condition promptly.</p>
                     <p>Sincerely,</p>
-                    <p class="mt-8 font-bold text-lg" id="pSign">________________</p>
+                    <p class="mt-8 font-bold text-lg" id="dispSign">________________</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="arsenal" class="max-w-7xl mx-auto py-12 px-6 border-t border-zinc-900 mb-20">
-        <h3 class="text-4xl font-heading uppercase mb-10 text-center text-white tracking-widest">The <span class="text-purple-700">Arsenal</span></h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <h3 class="text-4xl font-heading uppercase mb-10 text-center text-white">The Arsenal</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl">
-                <h4 class="text-xl font-heading text-white mb-4 uppercase">1. Evidence Log</h4>
-                <table class="w-full text-[10px] text-purple-300 mb-4">
-                    <tbody id="logTable">
-                        <tr class="border-b border-zinc-800/50">
-                            <td><input type="text" placeholder="Date" class="bg-transparent border-none w-full p-1 focus:outline-none"></td>
-                            <td><input type="text" placeholder="Method" class="bg-transparent border-none w-full p-1 focus:outline-none"></td>
-                            <td><input type="text" placeholder="Notes..." class="bg-transparent border-none w-full p-1 focus:outline-none"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button onclick="addRow()" class="text-[10px] uppercase font-bold text-purple-500">+ Add Entry</button>
-            </div>
-            <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl text-center">
-                <h4 class="text-xl font-heading text-white mb-4 uppercase">2. Constable Finder</h4>
-                <div class="space-y-3">
-                    <a href="https://www.harriscountytx.gov/Government/Constables" target="_blank" class="block bg-black/50 border border-zinc-700 p-3 rounded text-[10px] uppercase font-bold text-white hover:border-purple-500">Harris County (Baytown)</a>
-                    <a href="https://www.co.chambers.tx.us/page/constables" target="_blank" class="block bg-black/50 border border-zinc-700 p-3 rounded text-[10px] uppercase font-bold text-white hover:border-purple-500">Chambers County</a>
-                </div>
+                <h4 class="text-xl font-heading text-white mb-4 uppercase">Evidence Log</h4>
+                <p class="text-[10px] mb-4 text-zinc-500 uppercase">Track every lie. Record every call.</p>
+                <button onclick="addArsenalRow()" class="bg-purple-900/20 border border-purple-700 text-purple-400 px-4 py-2 text-[10px] font-bold uppercase hover:bg-purple-700 hover:text-white transition">+ Add Entry</button>
+                <div id="arsenalLog" class="mt-4 space-y-2"></div>
             </div>
             <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl">
-                <h4 class="text-xl font-heading text-white mb-4 uppercase">3. The Paper Trail</h4>
-                <ul class="text-[10px] space-y-2 text-purple-300 uppercase font-bold mb-6">
-                    <li>✔️ Request "Certified Mail"</li>
-                    <li>✔️ Ask for "Return Receipt Requested"</li>
-                    <li>✔️ Keep your tracking number</li>
-                </ul>
-                <a href="delivery.html" class="block text-center text-[10px] py-2 border border-purple-700 text-white font-bold uppercase hover:bg-purple-700 transition">View Delivery Guide</a>
+                <h4 class="text-xl font-heading text-white mb-4 uppercase">Local Help</h4>
+                <a href="https://www.harriscountytx.gov/Government/Constables" target="_blank" class="block text-[10px] text-purple-400 hover:text-white mb-2 uppercase">Harris Co. Constables</a>
+                <a href="https://www.co.chambers.tx.us/page/constables" target="_blank" class="block text-[10px] text-purple-400 hover:text-white uppercase">Chambers Co. Constables</a>
+            </div>
+            <div class="bg-zinc-900/30 border border-purple-900/50 p-6 rounded-xl">
+                <h4 class="text-xl font-heading text-white mb-4 uppercase">Paper Trail</h4>
+                <a href="delivery.html" class="block bg-purple-700 text-white font-bold py-2 px-4 rounded text-[10px] uppercase">Delivery Guide</a>
             </div>
         </div>
     </section>
 
-    <footer class="p-12 border-t border-zinc-900 bg-black/90 text-center">
-        <p class="text-[10px] text-zinc-500 uppercase tracking-widest leading-relaxed">
-            LEGAL DISCLAIMER: Stay Dangerous is not a law firm. © 2026 STAY DANGEROUS TEXAS.
-        </p>
+    <footer class="p-12 text-center text-zinc-700 uppercase tracking-widest text-[10px]">
+        Stay Dangerous © 2026 | Truth Over Everything
     </footer>
 
     <script>
-        function syncPreview() {
-            const name = document.getElementById('tenantName').value || "________________";
-            const landlord = document.getElementById('landlordName').value || "________________";
-            const addr = document.getElementById('tenantAddress').value || "________________";
-            const issue = document.getElementById('issueSelect').value;
+        function runTitaniumSync() {
+            const name = document.getElementById('tNameInput').value || "________________";
+            const landlord = document.getElementById('lNameInput').value || "________________";
+            const addr = document.getElementById('tAddrInput').value || "________________";
+            const issue = document.getElementById('tIssueSelect').value;
 
-            document.getElementById('pDate').innerText = new Date().toLocaleDateString();
-            document.getElementById('pLandlord').innerText = landlord;
-            document.getElementById('pTenant').innerText = name;
-            document.getElementById('pAddress').innerText = addr;
-            document.getElementById('pSign').innerText = name;
-            document.getElementById('pIssue').innerText = issue.toUpperCase();
+            document.getElementById('dispDate').innerText = new Date().toLocaleDateString();
+            document.getElementById('dispLandlord').innerText = landlord;
+            document.getElementById('dispTenant').innerText = name;
+            document.getElementById('dispAddress').innerText = addr;
+            document.getElementById('dispSign').innerText = name;
+            document.getElementById('dispIssue').innerText = issue.toUpperCase();
 
-            const purple = "#7e22ce";
-            const elements = ['pDate', 'pLandlord', 'pTenant', 'pAddress', 'pIssue', 'pSign'];
-            elements.forEach(id => document.getElementById(id).style.color = purple);
-
-            const subject = document.getElementById('pSubject');
-            const intro = document.getElementById('introParagraph');
-            const closing = document.getElementById('closingParagraph');
+            const subject = document.getElementById('dispSubject');
+            const intro = document.getElementById('dispIntro');
+            const closing = document.getElementById('dispClosing');
 
             if (issue.includes("Retaliation") || issue.includes("Harassment")) {
-                subject.innerText = "FORMAL COMPLAINT REGARDING LANDLORD CONDUCT";
-                intro.innerHTML = `This letter serves as a formal complaint regarding actions taken at <span style="color:${purple}; font-weight:bold;">${addr}</span>.`;
-                closing.innerText = "I demand that these actions cease immediately.";
+                subject.innerText = "RE: FORMAL COMPLAINT REGARDING LANDLORD CONDUCT";
+                intro.innerHTML = `This letter serves as a formal complaint regarding actions at <span style="color:#7e22ce;">${addr}</span>.`;
+                closing.innerText = "I demand that these actions cease immediately under Texas Law.";
             } else if (issue.includes("Accommodation")) {
-                subject.innerText = "REQUEST FOR REASONABLE ACCOMMODATION";
-                intro.innerHTML = `This letter is a formal request for an accommodation at <span style="color:${purple}; font-weight:bold;">${addr}</span>.`;
+                subject.innerText = "RE: REQUEST FOR REASONABLE ACCOMMODATION";
+                intro.innerHTML = `This is a formal request for accommodation at <span style="color:#7e22ce;">${addr}</span> under the Fair Housing Act.`;
                 closing.innerText = "Please provide a written response within a reasonable timeframe.";
             } else {
-                subject.innerText = "FORMAL NOTICE TO REPAIR - TX PROPERTY CODE § 92.056";
-                intro.innerHTML = `This letter serves as formal notice that a condition exists at <span style="color:${purple}; font-weight:bold;">${addr}</span> which affects safety.`;
+                subject.innerText = "RE: FORMAL NOTICE TO REPAIR - TX PROPERTY CODE § 92.056";
+                intro.innerHTML = `This letter serves as formal notice regarding health and safety conditions at <span style="color:#7e22ce;">${addr}</span>.`;
                 closing.innerText = "This is my formal request to repair the condition promptly.";
             }
         }
 
-        function addRow() {
-            const table = document.getElementById("logTable");
-            const row = table.insertRow();
-            row.className = "border-b border-zinc-800/50";
-            row.innerHTML = `<td><input type="text" placeholder="Date" class="bg-transparent border-none w-full p-1 focus:outline-none text-purple-300"></td><td><input type="text" placeholder="Method" class="bg-transparent border-none w-full p-1 focus:outline-none text-purple-300"></td><td><input type="text" placeholder="Notes..." class="bg-transparent border-none w-full p-1 focus:outline-none text-purple-300"></td>`;
+        function addArsenalRow() {
+            const log = document.getElementById('arsenalLog');
+            const entry = document.createElement('div');
+            entry.className = "flex gap-2 mb-2";
+            entry.innerHTML = `<input type="text" placeholder="Date" class="w-1/3 p-1 text-[8px] bg-black border border-zinc-800 text-white"><input type="text" placeholder="Notes" class="w-2/3 p-1 text-[8px] bg-black border border-zinc-800 text-white">`;
+            log.appendChild(entry);
         }
 
-        function generatePDF() {
+        function downloadTitaniumPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            const tName = document.getElementById('tenantName').value;
-            const lName = document.getElementById('landlordName').value;
-            const tAddr = document.getElementById('tenantAddress').value;
-            const issue = document.getElementById('issueSelect').value;
-            if(!tName || !lName || !tAddr) { alert("Please fill in all fields."); return; }
+            const n = document.getElementById('tNameInput').value;
+            const l = document.getElementById('lNameInput').value;
+            const a = document.getElementById('tAddrInput').value;
+            const i = document.getElementById('tIssueSelect').value;
+            if(!n || !l || !a) { alert("Fill all fields."); return; }
+            doc.setFontSize(10);
             doc.text(`DATE: ${new Date().toLocaleDateString()}`, 20, 20);
-            doc.text(`TO: ${lName}`, 20, 40);
-            doc.text(`FROM: ${tName}`, 20, 50);
-            doc.text(`RE: ${issue.toUpperCase()}`, 20, 70);
-            doc.text(`Property: ${tAddr}`, 20, 80);
-            doc.save("Stay_Dangerous_Notice.pdf");
+            doc.text(`TO: ${l}`, 20, 40);
+            doc.text(`FROM: ${n}`, 20, 50);
+            doc.text(`RE: ${i.toUpperCase()}`, 20, 70);
+            doc.text(`PROPERTY: ${a}`, 20, 80);
+            doc.text("Sincerely,", 20, 110);
+            doc.text(n, 20, 120);
+            doc.save("StayDangerous_Notice.pdf");
         }
-        window.onload = syncPreview;
+
+        // Initial trigger to clear placeholders
+        window.onload = runTitaniumSync;
     </script>
 </body>
 </html>
