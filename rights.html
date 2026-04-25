@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* THE BACKGROUND MEDUSA EFFECT */
+        /* THE BACKGROUND LOGO EFFECT */
         body {
             background-color: #000000;
             color: #ffffff;
@@ -26,11 +26,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('logo.png'); /* Ensure this matches your file name */
+            background-image: url('brand-logo.jpg'); /* UPDATED FILENAME */
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
-            opacity: 0.15; 
+            opacity: 0.15; /* Subtly dimmed so you can read the text */
             z-index: -1;
         }
 
@@ -55,10 +55,12 @@
             font-size: 1.2rem;
         }
         .rights-box {
-            background: rgba(17, 17, 17, 0.8); /* Semi-transparent black for readability */
+            /* Adds a slight dark tint behind text to make it pop over the logo */
+            background: rgba(0, 0, 0, 0.7); 
             border-left: 4px solid #7e22ce;
             padding: 20px;
             margin: 20px 0;
+            border-radius: 4px;
         }
         .translation {
             color: #bbbbbb;
