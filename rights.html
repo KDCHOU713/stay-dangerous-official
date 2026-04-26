@@ -4,161 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Know Your Rights | Stay Dangerous</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* THE BACKGROUND LOGO EFFECT */
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            position: relative;
+        .watermark { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            object-fit: contain; z-index: -1; pointer-events: none; 
+            opacity: 0.1;
+            filter: drop-shadow(0 0 1px #7e22ce);
         }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('brand-logo.jpg'); 
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
-            opacity: 0.12; 
-            z-index: -1;
+        .font-heading { font-family: 'Oswald', sans-serif; }
+        .step-card { 
+            background: rgba(24, 24, 27, 0.8);
+            border: 1px solid #3f3f46;
+            transition: all 0.3s ease;
         }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 40px 20px;
-        }
-        h1 {
-            color: #7e22ce; 
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            border-bottom: 2px solid #7e22ce;
-            padding-bottom: 10px;
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: #7e22ce;
-            margin-top: 30px;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-        }
-        .rights-box {
-            background: rgba(0, 0, 0, 0.75); 
-            border-left: 4px solid #7e22ce;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        .translation {
-            color: #bbbbbb;
-            font-style: italic;
-            margin-top: 10px;
-        }
-        .footer-link {
-            margin-top: 50px;
-            display: inline-block;
-            color: #7e22ce;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .footer-link:hover {
-            text-decoration: underline;
-        }
-        nav a { text-decoration: none !important; }
+        .step-card:hover { border-color: #7e22ce; }
     </style>
 </head>
-<body>
+<body class="bg-black text-zinc-300 font-sans">
 
-<nav class="w-full bg-black border-b-2 border-purple-700 p-2 flex justify-center sticky top-0 z-50">
-    <div class="flex items-center justify-center gap-x-2 sm:gap-x-4">
-        <a href="index.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Generator</a>
-        <a href="rights.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Mission</a>
-        <a href="delivery.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Delivery</a>
-        <a href="privacy.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Privacy</a>
-        <a href="terms.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Terms</a>
-        <a href="contact.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Contact</a>
-    </div>
-</nav>
+    <img src="brand-logo.jpg" class="watermark" alt="Stay Dangerous Logo">
 
-<div class="container">
-    <h1>Know Your Rights</h1>
-    <p>In the streets and in your home, knowledge is the only armor that never breaks. Here is the full Bill of Rights, translated for the real world:</p>
+    <nav class="w-full bg-black border-b-2 border-purple-700 p-2 flex justify-center">
+        <div class="flex items-center justify-center gap-x-2 sm:gap-x-4">
+            <a href="index.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Generator</a>
+            <a href="rights.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Mission</a>
+            <a href="delivery.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Delivery</a>
+            <a href="privacy.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Privacy</a>
+            <a href="terms.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Terms</a>
+            <a href="contact.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Contact</a>
+        </div>
+    </nav>
 
-    <div class="rights-box">
-        <h2>The First Amendment</h2>
-        <p><strong>The Law:</strong> Freedom of religion, speech, press, assembly, and petition.</p>
-        <p class="translation"><strong>The Stay Dangerous Breakdown:</strong> You have the right to record police interactions in public. Your camera is your witness; keep it rolling as long as you aren't physically interfering.</p>
-    </div>
+    <main class="max-w-4xl mx-auto py-16 px-6">
+        
+        <header class="mb-16">
+            <h1 class="text-5xl md:text-7xl font-heading uppercase text-white mb-4">Know Your <span class="text-purple-700">Rights</span></h1>
+            <p class="text-xl text-zinc-500 uppercase tracking-widest italic">Knowledge is the only armor that never breaks.</p>
+        </header>
 
-    <div class="rights-box">
-        <h2>The Second Amendment</h2>
-        <p><strong>The Law:</strong> The right to keep and bear arms.</p>
-        <p class="translation"><strong>The Stay Dangerous Breakdown:</strong> You have the right to protect yourself. Know your local carry laws and never volunteer information about your legal protection unless legally required.</p>
-    </div>
+        <div class="space-y-8">
+            
+            <div class="step-card p-8 rounded-lg">
+                <div class="flex items-start gap-6">
+                    <span class="text-5xl font-heading text-purple-900">01</span>
+                    <div>
+                        <h2 class="text-2xl font-heading text-white uppercase mb-2">The First Amendment</h2>
+                        <p class="text-zinc-400 mb-2">Freedom of speech, press, and assembly.</p>
+                        <p class="italic text-purple-400">"You have the right to record police in public. Your camera is your witness."</p>
+                    </div>
+                </div>
+            </div>
 
-    <div class="rights-box">
-        <h2>The Third Amendment</h2>
-        <p><strong>The Law:</strong> Protection from quartering of troops.</p>
-        <p class="translation"><strong>The Stay Dangerous Breakdown:</strong> Your home is your castle. Government agents cannot occupy your property or force you to house them without your consent.</p>
-    </div>
+            <div class="step-card p-8 rounded-lg border-l-4 border-l-purple-700">
+                <div class="flex items-start gap-6">
+                    <span class="text-5xl font-heading text-purple-900">02</span>
+                    <div>
+                        <h2 class="text-2xl font-heading text-white uppercase mb-2">The Second Amendment</h2>
+                        <p class="text-zinc-400 mb-2">The right to keep and bear arms.</p>
+                        <p class="italic text-purple-400">"Protect yourself. Know your carry laws and never volunteer information about your protection."</p>
+                    </div>
+                </div>
+            </div>
 
-    <div class="rights-box">
-        <h2>The Fourth Amendment</h2>
-        <p><strong>The Law:</strong> Protection against unreasonable searches and seizures.</p>
-        <p class="translation"><strong>The Stay Dangerous Breakdown:</strong> This is your primary shield. If they don't have a warrant, the magic words are always: "I do not consent to any searches." Force them to follow the law.</p>
-    </div>
+            <div class="step-card p-8 rounded-lg">
+                <div class="flex items-start gap-6">
+                    <span class="text-5xl font-heading text-purple-900">04</span>
+                    <div>
+                        <h2 class="text-2xl font-heading text-white uppercase mb-2">The Fourth Amendment</h2>
+                        <p class="text-zinc-400 mb-2">Protection against unreasonable searches.</p>
+                        <p class="italic text-purple-400">"If they don't have a warrant: 'I do not consent to any searches.'"</p>
+                    </div>
+                </div>
+            </div>
 
-    <div class="rights-box">
-        <h2>The Fifth Amendment</h2>
-        <p><strong>The Law:</strong> Right to due process, protection against self-incrimination and double jeopardy.</p>
-        <p class="translation"><strong>The Stay Dangerous Breakdown:</strong> You cannot talk your way out of an arrest, but you can talk your way into a conviction. Invoke your right immediately: "I am exercising my 5th Amendment right to remain silent."</p>
-    </div>
+            <div class="step-card p-8 rounded-lg border-l-4 border-l-purple-700">
+                <div class="flex items-start gap-6">
+                    <span class="text-5xl font-heading text-purple-900">05</span>
+                    <div>
+                        <h2 class="text-2xl font-heading text-white uppercase mb-2">The Fifth Amendment</h2>
+                        <p class="text-zinc-400 mb-2">Right to remain silent.</p>
+                        <p class="italic text-purple-400">"Invoke it: 'I am exercising my right to remain silent and I want my lawyer.'"</p>
+                    </div>
+                </div>
+            </div>
 
-    <div class="rights-box">
-        <h2>The Sixth Amendment</h2>
-        <p><strong>The Law:</strong> Right to a speedy and public trial, impartial jury, and right to counsel.</p>
-        <p class="translation"><strong>The Stay Dangerous Breakdown:</strong> Never face the system alone. If questioned, simply say: "I want my lawyer." Once you say those exact words, they must stop questioning you.</p>
-    </div>
+            <div class="step-card p-8 rounded-lg">
+                <div class="flex items-start gap-6">
+                    <span class="text-5xl font-heading text-purple-900">06</span>
+                    <div>
+                        <h2 class="text-2xl font-heading text-white uppercase mb-2">The Sixth Amendment</h2>
+                        <p class="text-zinc-400 mb-2">The right to counsel.</p>
+                        <p class="italic text-purple-400">"Once you ask for a lawyer, they must stop questioning you. Never face the system alone."</p>
+                    </div>
+                </div>
+            </div>
 
-    <div class="rights-box">
-        <h2>The Seventh Amendment</h2>
-        <p><strong>The Law:</strong> Right to a trial by jury in civil cases.</p>
-        <p class="translation"><strong>The Stay Dangerous Breakdown:</strong> Even in non-criminal disputes over property or money, the system cannot just rubber-stamp a judgment behind closed doors. You have the right to present your case to a jury of your peers.</p>
-    </div>
+            <div class="step-card p-8 rounded-lg">
+                <div class="flex items-start gap-6">
+                    <span class="text-5xl font-heading text-purple-900">10</span>
+                    <div>
+                        <h2 class="text-2xl font-heading text-white uppercase mb-2">The Tenth Amendment</h2>
+                        <p class="text-zinc-400 mb-2">Powers to the States and People.</p>
+                        <p class="italic text-purple-400">"The government only has the power explicitly given to it. The rest belongs to you."</p>
+                    </div>
+                </div>
+            </div>
 
-    <div class="rights-box">
-        <h2>The Eighth Amendment</h2>
-        <p><strong>The Law:</strong> Protection against excessive bail, excessive fines, and cruel and unusual punishment.</p>
-        <p class="translation"><strong>The Stay Dangerous Breakdown:</strong> The punishment must fit the crime. The state cannot use impossible bail amounts simply to keep you locked up and break your spirit before a conviction.</p>
-    </div>
+        </div>
 
-    <div class="rights-box">
-        <h2>The Ninth Amendment</h2>
-        <p><strong>The Law:</strong> Rights retained by the people.</p>
-        <p class="translation"><strong>The Stay Dangerous Breakdown:</strong> Just because a right isn't explicitly written on this list doesn't mean you don't have it. Your freedom extends far beyond what is printed on paper.</p>
-    </div>
+        <div class="mt-20 p-10 bg-black/80 border border-purple-900/40 text-center">
+            <h3 class="font-heading text-white text-3xl uppercase mb-4">The Full Bill of Rights</h3>
+            <p class="max-w-2xl mx-auto text-sm leading-relaxed italic text-zinc-400">
+                This is your foundation. Every tool in the Arsenal is built upon these protections. Use them, or lose them.
+            </p>
+        </div>
 
-    <div class="rights-box">
-        <h2>The Tenth Amendment</h2>
-        <p><strong>The Law:</strong> Powers delegated to the states and the people.</p>
-        <p class="translation"><strong>The Stay Dangerous Breakdown:</strong> The federal government only has the power explicitly given to it. Everything else belongs to the states and, ultimately, directly to you.</p>
-    </div>
+    </main>
 
-    <a href="index.html" class="footer-link">← BACK TO GENERATOR</a>
-</div>
+    <footer class="p-12 text-center border-t border-zinc-900 mt-20">
+        <a href="index.html" class="font-heading text-purple-700 hover:text-white transition uppercase tracking-widest text-xl">Return to the Arsenal</a>
+        <p class="text-[9px] uppercase tracking-[0.4em] text-zinc-800 mt-8">STAY DANGEROUS | BAYTOWN TX</p>
+    </footer>
 
 </body>
 </html>
