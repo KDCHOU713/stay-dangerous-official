@@ -4,122 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service | Stay Dangerous</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+        .watermark { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            object-fit: contain; z-index: -1; pointer-events: none; 
+            opacity: 0.1;
+            filter: drop-shadow(0 0 1px #7e22ce);
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 40px 20px;
+        .font-heading { font-family: 'Oswald', sans-serif; }
+        .terms-card { 
+            background: rgba(24, 24, 27, 0.8);
+            border: 1px solid #3f3f46;
+            transition: all 0.3s ease;
         }
-        h1 {
-            color: #7e22ce; 
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            border-bottom: 2px solid #7e22ce;
-            padding-bottom: 10px;
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: #7e22ce;
-            margin-top: 30px;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-        }
-        p {
-            margin-bottom: 15px;
-            color: #cccccc;
-        }
-        .terms-box {
-            background: #111;
-            border-left: 4px solid #7e22ce;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .footer-link {
-            margin-top: 50px;
-            display: inline-block;
-            color: #7e22ce;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .footer-link:hover {
-            text-decoration: underline;
-        }
-        nav a { text-decoration: none !important; }
+        .terms-card:hover { border-color: #7e22ce; }
     </style>
 </head>
-<body class="bg-black">
+<body class="bg-black text-zinc-300 font-sans">
 
-<nav class="w-full bg-black border-b-2 border-purple-700 p-2 flex justify-center">
-    <div class="flex items-center justify-center gap-x-2 sm:gap-x-4">
+    <img src="brand-logo.jpg" class="watermark" alt="Stay Dangerous Logo">
+
+    <nav class="w-full bg-black border-b-2 border-purple-700 p-2 flex justify-center">
+        <div class="flex items-center justify-center gap-x-2 sm:gap-x-4">
+            <a href="index.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Generator</a>
+            <a href="rights.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Mission</a>
+            <a href="delivery.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Delivery</a>
+            <a href="privacy.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Privacy</a>
+            <a href="terms.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Terms</a>
+            <a href="contact.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">Contact</a>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-16 px-6">
         
-        <a href="index.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">
-            Generator
-        </a>
-        
-        <a href="rights.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">
-            Mission
-        </a>
-        
-        <a href="delivery.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">
-            Delivery
-        </a>
-        
-        <a href="privacy.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">
-            Privacy
-        </a>
-        
-        <a href="terms.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">
-            Terms
-        </a>
-        
-        <a href="contact.html" class="px-1 py-2 font-bold text-purple-500 hover:text-white uppercase tracking-tighter text-[10px] sm:text-sm whitespace-nowrap transition-colors">
-            Contact
-        </a>
+        <header class="mb-16">
+            <h1 class="text-5xl md:text-7xl font-heading uppercase text-white mb-4">Terms of <span class="text-purple-700">Service</span></h1>
+            <p class="text-xl text-zinc-500 uppercase tracking-widest italic">The rules of engagement.</p>
+        </header>
 
-    </div>
-</nav>
-<div class="container">
-    <h1>Terms of Service</h1>
-    
-    <p>By accessing Stay Dangerous, you agree to the following terms. This platform is built for the empowered and the informed.</p>
+        <div class="space-y-8">
+            
+            <div class="terms-card p-8 rounded-lg">
+                <h2 class="text-2xl font-heading text-white uppercase mb-4">1. Acceptance</h2>
+                <p>By accessing the Stay Dangerous arsenal, you acknowledge that you have read and agreed to these terms. If you do not agree, exit the platform immediately.</p>
+            </div>
 
-    <div class="terms-box">
-        <h2>1. Acceptance of Terms</h2>
-        <p>By using this website, you acknowledge that you have read, understood, and agreed to be bound by these terms. If you do not agree, you should exit the site immediately.</p>
-    </div>
+            <div class="terms-card p-8 rounded-lg border-l-4 border-l-purple-700">
+                <h2 class="text-2xl font-heading text-white uppercase mb-4">2. Non-Legal Advice</h2>
+                <p>We provide tools, templates, and scripts for informational purposes. Stay Dangerous is not a law firm. Always consult with legal counsel for specific legal advice.</p>
+            </div>
 
-    <div class="terms-box">
-        <h2>2. Use of Information</h2>
-        <p>The scripts and information provided on this site are for educational and informational purposes only. We provide tools to help you understand your rights, but we are not a law firm and do not provide legal advice.</p>
-    </div>
+            <div class="terms-card p-8 rounded-lg">
+                <h2 class="text-2xl font-heading text-white uppercase mb-4">3. User Responsibility</h2>
+                <p>You are solely responsible for how you use the scripts and information provided. We are not liable for any outcomes resulting from your interactions with third parties or law enforcement.</p>
+            </div>
 
-    <div class="terms-box">
-        <h2>3. User Responsibility</h2>
-        <p>You are responsible for your own actions and how you choose to use the information generated here. Stay Dangerous is not liable for any outcomes resulting from the use of our scripts or information.</p>
-    </div>
+            <div class="terms-card p-8 rounded-lg">
+                <h2 class="text-2xl font-heading text-white uppercase mb-4">4. Intellectual Property</h2>
+                <p>All design, logic, and custom branding—including the Medusa "Stay Dangerous" logo—are the property of Stay Dangerous. Unauthorized duplication is prohibited.</p>
+            </div>
 
-    <div class="terms-box">
-        <h2>4. Intellectual Property</h2>
-        <p>The branding, design, and specific generator logic found on Stay Dangerous are the property of the site owners. Unauthorized duplication is prohibited.</p>
-    </div>
+        </div>
 
-    <p>We reserve the right to update these terms at any time. Stay vigilant. Stay dangerous.</p>
+        <div class="mt-20 p-10 bg-black/80 border border-purple-900/40 text-center">
+            <h3 class="font-heading text-white text-3xl uppercase mb-4">Stay Vigilant</h3>
+            <p class="max-w-2xl mx-auto text-sm leading-relaxed italic text-zinc-400">
+                We reserve the right to modify these terms at any time. Your continued use of the site signifies your agreement to the updated mission parameters.
+            </p>
+        </div>
 
-    <a href="index.html" class="footer-link">← BACK TO GENERATOR</a>
-</div>
+    </main>
+
+    <footer class="p-12 text-center border-t border-zinc-900 mt-20">
+        <a href="index.html" class="font-heading text-purple-700 hover:text-white transition uppercase tracking-widest text-xl">Return to the Arsenal</a>
+        <p class="text-[9px] uppercase tracking-[0.4em] text-zinc-800 mt-8">STAY DANGEROUS | BAYTOWN TX</p>
+    </footer>
 
 </body>
 </html>
